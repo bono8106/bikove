@@ -8,6 +8,11 @@ package stuff
 object SelfTypes extends App {
 
   trait Required {
+
+    class Extendable {
+      def n: String = "joe"
+    }
+
     def x: Int = 1
   }
 
@@ -17,6 +22,10 @@ object SelfTypes extends App {
     def y = 3
 
     def z = x + y + 2
+
+    class Sub extends this.Extendable {
+      override def n = "hi " + super.n
+    }
 
   }
 
@@ -30,9 +39,14 @@ object SelfTypes extends App {
 
   val obj3 = new Composable with Required
   println(obj3.z) // prints 6
+  println((new obj3.Sub).n) // prints "hi joe"
 
   val obj4 = new Composable with Required { override def x = super.x + 2 }
   println(obj4.z) // prints 8
 
+  val obj5 = new Composable with Required {
+    class Extendable { def n = "peter" }
+  }
+  println((new obj5.Sub).n) // prints "hi joe" because no virtual classes
 
 }
