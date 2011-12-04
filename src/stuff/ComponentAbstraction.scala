@@ -15,7 +15,7 @@ object ComponentAbstraction extends App {
         observers = obs :: observers
 
       def publish =
-        for (val obs <- observers)
+        for (obs <- observers)
           obs.notify(this)
     }
 

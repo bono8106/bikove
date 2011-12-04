@@ -19,7 +19,7 @@ object VirtualTypes extends App {
     type E <: Hashable;
     override def insert(elm: E) { elm.hashCode() }
   }
-  class IntegerSet extends HashedSet { type E = Integer; }
+  class IntegerSet extends HashedSet { type E = java.lang.Integer; }
 
 
   abstract class Ordered {
