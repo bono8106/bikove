@@ -14,6 +14,7 @@ object SelfTypes extends App {
     }
 
     def x: Int = 1
+    def xx = x
   }
 
   class Composable {
@@ -33,12 +34,15 @@ object SelfTypes extends App {
 
   val obj = new Composable with Required { override def x = 10 }
   println(obj.z) // prints 15
+  println(obj.x) // prints 10
 
-  val obj2 = new Composable with Required { override def x = 20 }
+  val obj2: Composable = new Composable with Required { override def x = 20 }
   println(obj2.z) // prints 25
+  //println(obj2.x) // does not compile
 
   val obj3 = new Composable with Required
   println(obj3.z) // prints 6
+  println(obj3.x) // prints 1
   println((new obj3.Sub).n) // prints "hi joe"
 
   val obj4 = new Composable with Required { override def x = super.x + 2 }
