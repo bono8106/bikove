@@ -8,6 +8,7 @@ package stuff
 object SelfTypes extends App {
 
   trait Required {
+    _: Composable =>
 
     class Extendable {
       def n: String = "joe"
@@ -38,7 +39,7 @@ object SelfTypes extends App {
 
   val obj2: Composable = new Composable with Required { override def x = 20 }
   println(obj2.z) // prints 25
-  //println(obj2.x) // does not compile
+  //println(obj2.xx) // does not compile
 
   val obj3 = new Composable with Required
   println(obj3.z) // prints 6
