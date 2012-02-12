@@ -6,7 +6,7 @@ public class TryWithResources {
                door.swing();
                window.crank();
     }
-    catch(Exception e) {System.out.println("Is there a draft?");}
+    catch(Exception e) {System.out.println("Is there a draft?"); e.printStackTrace(); }
      finally {System.out.println("I'm putting a sweater on, regardless.");}
   }
 }
@@ -19,6 +19,7 @@ class OpenDoor implements AutoCloseable {
   }
   public void close() throws Exception {
     System.out.println("The door is closed.");
+    throw new Exception("door exception");
   }
 }
 
