@@ -16,17 +16,18 @@ public class Webalo {
   }
 
   private static int hash(long currentTimeValue) {
-    // There is technically no need to trim currentTimeVlaue to 16 bits, but oh-well.
-    final int stime = (int) (currentTimeValue & 0xFFFF); // 16-bit-time
     // Thought I would have to copy stime to the left to allow getting node-bits in one shot..
     // But since starting bit in stime is always even (node-ID * 2), there is no need to do that.
-    return treeHash(0, 0, stime/* | (stime << 16)*/);
+    // There is subsequently also no need to trim currentTimeVlaue to 16 bits.
+    return treeHash(0, 0, (int) currentTimeValue);
   }
 
   /**
+   * Compute the given expression tree.
    *
-   * @param i the node-ID
-   * @param depth the depth in the tree
+   * @param i node-ID
+   * @param depth depth in the tree
+   * @param stime 16-bit-time
    * @return the value of the expression tree
    */
   private static int treeHash(int i, int depth, int stime) {
