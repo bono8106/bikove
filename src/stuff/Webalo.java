@@ -3,8 +3,7 @@ package stuff;
 public class Webalo {
 
   public static void main(String[] args) {
-    long currentTimeValue = 1290126162373L;
-    //long currentTimeValue = System.currentTimeMillis();
+    long currentTimeValue = System.currentTimeMillis();
     System.out.println("Current Time: " + currentTimeValue);
     System.out.println("Hash Value: " + hash(currentTimeValue));
     System.out.println("Hash Value (1345158833072 = 10 ): " + hash(1345158833072L));
@@ -19,7 +18,7 @@ public class Webalo {
     // Thought I would have to copy stime to the left to allow getting node-bits in one shot..
     // But since starting bit in stime is always even (node-ID * 2), there is no need to do that.
     // There is subsequently also no need to trim currentTimeVlaue to 16 bits.
-    return treeHash(0, 0, (int) currentTimeValue);
+    return treeHash(0, (int) currentTimeValue);
   }
 
   /**
@@ -30,15 +29,15 @@ public class Webalo {
    * @param stime 16-bit-time
    * @return the value of the expression tree
    */
-  private static int treeHash(int i, int depth, int stime) {
+  private static int treeHash(int i, int stime) {
     // Get the node-bits together (since always starting at even location, bits are always present together).
     int nodeBits = (stime >> ((i * 2) & 0xF)) & 3;
-    if (depth == 4) { // depth 4 has (2^(4 + 1) - 1) = 31 nodes
+    if (i > 14) { // depth 4 has (2^(4 + 1) - 1) = 31 nodes
       return (nodeBits << 30) >> 30; // expand 2-bit two's complement number
     } else {
       // Internal
-      int x = treeHash(((2 * i) + 1), depth + 1, stime);
-      int y = treeHash((2 * (i + 1)), depth + 1, stime);
+      int x = treeHash(((2 * i) + 1), stime);
+      int y = treeHash((2 * (i + 1)), stime);
 
       switch (nodeBits) {
       case 0: // x f y
