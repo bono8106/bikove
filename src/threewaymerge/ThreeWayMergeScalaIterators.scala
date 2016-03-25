@@ -12,11 +12,11 @@ object ThreeWayMergeScalaIterators extends App {
   }
 
   def sortn(input: Array[Int]*): Array[Int] = {
-    val len = input map(_.length) sum
+    val len = input.map(_.length).sum
 
     val result = new Array[Int](len)
 
-    val ii = input map (_.toStream) toArray;
+    val ii = input.map(_.toStream).toArray;
     for (i <- 0 until result.length) {
       var min = Int.MaxValue
       var ni = -1

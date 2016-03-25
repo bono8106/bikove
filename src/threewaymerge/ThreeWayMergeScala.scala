@@ -12,7 +12,7 @@ object ThreeWayMergeScala extends App {
   }
 
   def sortn(input: Array[Int]*): Array[Int] = {
-    val len = input map(_.length) sum
+    val len = input.map(_.length).sum
 
     val result = new Array[Int](len)
 

@@ -20,6 +20,9 @@ object RepresentationIndependence extends App {
   val z: Puttable = mutable.MutableList[Int](10).padTo(10, 0)
   val m: Puttable = mutable.Map[Int, Int]()
 
+  // All of the below calls to Puttable.{update,apply} are reflective!
+  import language.reflectiveCalls
+
   x(0) = 5
 
   y(1) = 7
@@ -31,5 +34,4 @@ object RepresentationIndependence extends App {
   val n: Int = m(5)
 
   printf("x = %s%ny = %s%nz = %s%nm = %s%n", x, y, z, m)
-
 }

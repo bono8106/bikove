@@ -7,8 +7,9 @@ package actor {
 }
 
 package object actor {
+  import language.implicitConversions
 
-  implicit def anyRef2Askable(o: ActorRef) = new dispatch.Askable(o)
+  implicit def actorRef2Askable(o: ActorRef) = new dispatch.Askable(o)
 
 }
 
