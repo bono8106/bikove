@@ -50,7 +50,7 @@ abstract class BncEngine {
     
   }
 
-  type TNumberList = collection.mutable.LinkedList[TBncNumber];
+  type TNumberList = collection.mutable.MutableList[TBncNumber];
 
   abstract class TComputerBncPlayer(allowLeadZero: Boolean) extends TCustomBncPlayer(allowLeadZero) {
     protected val list: TNumberList;

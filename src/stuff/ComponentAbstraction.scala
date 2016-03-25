@@ -30,9 +30,11 @@ object ComponentAbstraction extends App {
 
   for (x <- List(1, 2, 3) if x % 2 == 0) println(x);
 
-  """
+  def xx = """
   Hello
   """
+  
+  println(xx)
 
   val z = classOf[App]
 

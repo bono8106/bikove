@@ -17,7 +17,7 @@ object RepresentationIndependence extends App {
 
   val x: Puttable = Array.ofDim[Int](10)
   val y: Puttable = mutable.ArraySeq[Int](10).padTo(10, 0)
-  val z: Puttable = mutable.LinkedList[Int](10).padTo(10, 0)
+  val z: Puttable = mutable.MutableList[Int](10).padTo(10, 0)
   val m: Puttable = mutable.Map[Int, Int]()
 
   x(0) = 5
