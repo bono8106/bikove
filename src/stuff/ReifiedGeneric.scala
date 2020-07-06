@@ -1,33 +1,24 @@
 package stuff
 
 object ReifiedGeneric extends App {
-
   object Generics {
-
     class Holder[@specialized T](private var value: T) {
+      def get: T = value
 
-      def get = value
-
-      def set(n: T) { value = n }
-
+      def set(n: T): Unit = { value = n }
     }
-
   }
 
   object VirtualTypes {
-
     class Holder {
-
       type T <: AnyVal
 
       private var value: T = _
 
-      def get = value
+      def get: T = value
 
-      def set(n: T) { value = n }
-
+      def set(n: T): Unit = { value = n }
     }
-
   }
 
   {
@@ -41,5 +32,4 @@ object ReifiedGeneric extends App {
     test.set(0)
     println(test.get)
   }
-
 }

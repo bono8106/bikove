@@ -1,9 +1,8 @@
 package scoping
 
 object SubSup extends App {
-
   class Sup {
-    def sqrt(x: Int) = x*x
+    def sqrt(x: Int): Int = x*x
   }
 
   import java.lang.Math.sqrt
@@ -11,5 +10,4 @@ object SubSup extends App {
   class Sub extends Sup {
     sqrt(10)
   }
-
 }

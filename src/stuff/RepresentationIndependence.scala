@@ -7,7 +7,6 @@ package stuff
  * http://www.rand.org/pubs/research_memoranda/2007/RM5290.pdf
  */
 object RepresentationIndependence extends App {
-
   import scala.collection._
 
   type Puttable = {
@@ -17,13 +16,13 @@ object RepresentationIndependence extends App {
 
   val x: Puttable = Array.ofDim[Int](10)
   val y: Puttable = mutable.ArraySeq[Int](10).padTo(10, 0)
-  val z: Puttable = mutable.MutableList[Int](10).padTo(10, 0)
+  val z: Puttable = mutable.ArrayDeque[Int](10).padTo(10, 0)
   val m: Puttable = mutable.Map[Int, Int]()
 
   // All of the below calls to Puttable.{update,apply} are reflective!
   import language.reflectiveCalls
 
-  x(0) = 5
+  //x(0) = 5
 
   y(1) = 7
 

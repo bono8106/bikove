@@ -1,7 +1,6 @@
 package stuff
 
 object ComponentAbstraction extends App {
-
   abstract class SubjectObserver {
     type S <: Subject
     type O <: Observer
@@ -11,10 +10,10 @@ object ComponentAbstraction extends App {
 
       private var observers: List[O] = List()
 
-      def subscribe(obs: O) =
+      def subscribe(obs: O): Unit =
         observers = obs :: observers
 
-      def publish =
+      def publish(): Unit =
         for (obs <- observers)
           obs.notify(this)
     }
@@ -28,14 +27,13 @@ object ComponentAbstraction extends App {
 
   println(x)
 
-  for (x <- List(1, 2, 3) if x % 2 == 0) println(x);
+  for (x <- List(1, 2, 3) if x % 2 == 0) println(x)
 
   def xx = """
   Hello
   """
-  
+
   println(xx)
 
   val z = classOf[App]
-
 }

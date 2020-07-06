@@ -1,14 +1,13 @@
 package stuff
 
 object LazyTest extends App {
-
   class Whole {
     lazy val partA = new PartA(this)
     lazy val partB = new PartB(this)
   }
 
   class PartA(val whole: Whole) {
-    lazy val y = whole.partB.Y
+    lazy val y: whole.partB.Y.type = whole.partB.Y
 
     object X {
       override def toString = "object X"
@@ -16,7 +15,7 @@ object LazyTest extends App {
   }
 
   class PartB(val whole: Whole) {
-    lazy val x = whole.partA.X
+    lazy val x: whole.partA.X.type = whole.partA.X
 
     object Y {
       override def toString = "object Y"
@@ -27,6 +26,4 @@ object LazyTest extends App {
 
   println(whole.partA.y)
   println(whole.partB.x)
-
-
 }

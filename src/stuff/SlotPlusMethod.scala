@@ -1,7 +1,6 @@
 package stuff
 
 object SlotPlusMethod extends App {
-
   var slot = 1
 
   val x2 = if (slot == 1) "a" else "b"
@@ -23,5 +22,4 @@ object SlotPlusMethod extends App {
 
   class Child extends Parent {
   }
-
 }

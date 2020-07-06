@@ -1,7 +1,6 @@
 package stuff;
 
 public class Webalo {
-
   public static void main(String[] args) {
     long currentTimeValue = System.currentTimeMillis();
     System.out.println("Current Time: " + currentTimeValue);
@@ -25,7 +24,6 @@ public class Webalo {
    * Compute the given expression tree.
    *
    * @param i node-ID
-   * @param depth depth in the tree
    * @param stime 16-bit-time
    * @return the value of the expression tree
    */
@@ -53,5 +51,4 @@ public class Webalo {
       }
     }
   }
-
 }

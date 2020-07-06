@@ -2,14 +2,6 @@ package threewaymerge;
 
 
 public class ThreeWayMergeJava {
-
-  public int getArrayLength(int[] x) {
-    return x.length;
-  }
-
-  /**
-   * @param args
-   */
   public static void main(String[] args) {
     int[] input1 = {1, 3, 5};
     int[] input2 = {2, 4};
@@ -44,5 +36,4 @@ public class ThreeWayMergeJava {
     }
     return result;
   }
-
 }

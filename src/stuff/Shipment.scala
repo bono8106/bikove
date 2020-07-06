@@ -16,29 +16,29 @@ object Shipment extends App {
     timeCal.set(Calendar.MINUTE, 0)
     timeCal.set(Calendar.SECOND, 0)
     timeCal.set(Calendar.MILLISECOND, 0)
-    return timeCal.getTime()
+    timeCal.getTime
   }
 
   def getHourOfDay(time: Date): Int = {
     val timeCal = Calendar.getInstance()
     timeCal.setTime(time)
-    return timeCal.get(Calendar.HOUR_OF_DAY)
+    timeCal.get(Calendar.HOUR_OF_DAY)
   }
 
   def getHourCeiling(time: Date): Date = {
     val HOUR_IN_MILLIS = 60 * 60 * 1000
-    val hourOffsetMillis: Long = time.getTime() % HOUR_IN_MILLIS
-    val timeFloorHours: Long = time.getTime() / HOUR_IN_MILLIS
+    val hourOffsetMillis: Long = time.getTime % HOUR_IN_MILLIS
+    val timeFloorHours: Long = time.getTime / HOUR_IN_MILLIS
 
     val timeCeilHours: Long = if (hourOffsetMillis > 0) timeFloorHours + 1 else timeFloorHours
-    return new Date(timeCeilHours * HOUR_IN_MILLIS)
+    new Date(timeCeilHours * HOUR_IN_MILLIS)
   }
 
   def nextDay(time: Date): Date = {
     val timeCal = Calendar.getInstance()
     timeCal.setTime(time)
     timeCal.add(Calendar.DATE, 1)
-    return timeCal.getTime()
+    timeCal.getTime
   }
 
   val PICKUP_OPEN_HOUR = 9
@@ -53,7 +53,7 @@ object Shipment extends App {
 
     val minPickupStart = getHourCeiling(currentTime)
 
-    val pickupStart: Date = 
+    val pickupStart: Date =
       if (minPickupStart.before(pickupOpen)) {
         pickupOpen
       } else if (minPickupStart.after(pickupCutoff)) {
@@ -65,7 +65,7 @@ object Shipment extends App {
     val deliveryStart = getTimeWithHour(pickupStart,
         getHourOfDay(pickupStart) + MIN_PICKUP_DELIVERY_GAP_HOURS)
 
-    return Shipment(
+    Shipment(
         Window(pickupStart, getTimeWithHour(pickupStart, PICKUP_CLOSE_HOUR)),
         Window(deliveryStart, getTimeWithHour(deliveryStart, DELIVERY_CLOSE_HOUR)))
   }

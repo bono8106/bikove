@@ -1,13 +1,12 @@
 package stuff
 
 object ClosureTest extends App {
+  var escaped: () => Unit = _
 
-  var escaped: Function0[Unit] = _
-
-  def enclose(block: => Unit) {
+  def enclose(block: => Unit): Unit = {
     try {
       println("enclosure before")
-      escaped = block _
+      escaped = () => block
       block
       println("enclosure after")
     } finally {
@@ -15,7 +14,7 @@ object ClosureTest extends App {
     }
   }
 
-  def driver {
+  def driver(): Unit = {
     try {
       println("driver start")
       enclose {
@@ -35,8 +34,7 @@ object ClosureTest extends App {
     }
   }
 
-  driver
+  driver()
 
   escaped()
-
 }

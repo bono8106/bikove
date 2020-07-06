@@ -3,10 +3,6 @@ package problems;
 import java.util.Random;
 
 public class Sandwiches {
-
-  /**
-   * @param args
-   */
   public static void main(String[] args) {
     int[] items = new int[10];
     for (int i = 0; i < items.length; i++) {
@@ -34,7 +30,7 @@ public class Sandwiches {
     System.out.println();
   }
 
-  public static void resort(int[] items) {
+  private static void resort(int[] items) {
     int swaps = 0;
     for (int i = 0; i < items.length; i++) {
       int item = items[i];
@@ -50,5 +46,4 @@ public class Sandwiches {
     }
     System.out.printf("Resorted with %d swaps.\n", swaps);
   }
-
 }

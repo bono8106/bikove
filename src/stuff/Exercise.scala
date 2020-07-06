@@ -1,7 +1,6 @@
 package stuff
 
 object Exercise extends App {
-
   val y = 1 :: 2 :: 3 :: Nil
 
   val z = Nil :+ 1
@@ -36,7 +35,7 @@ object Exercise extends App {
     var hi = Int.MaxValue
 
     while (lo <= hi) {
-      val mid = lo + ((hi - lo)/2);
+      val mid = lo + ((hi - lo)/2)
 
       val v = h.at(mid)
 
@@ -49,7 +48,6 @@ object Exercise extends App {
       }
 
     }
-    return -1;
+    -1
   }
-
 }

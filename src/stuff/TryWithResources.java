@@ -13,7 +13,7 @@ public class TryWithResources {
 
 class OpenDoor implements AutoCloseable {
   public OpenDoor() { System.out.println("The door is open."); }
-  public void swing() throws Exception {
+  void swing() throws Exception {
     System.out.println("The door is becoming unhinged.");
     throw new Exception();
   }
@@ -25,7 +25,7 @@ class OpenDoor implements AutoCloseable {
 
 class OpenWindow implements AutoCloseable {
   public OpenWindow() { System.out.println("The window is open."); }
-  public void crank() throws Exception {
+  void crank() throws Exception {
     System.out.println("The window is overcranked!");
     throw new Exception();
   }

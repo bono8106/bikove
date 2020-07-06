@@ -6,7 +6,6 @@ package stuff
  * or dependency injection.
  */
 object SelfTypes extends App {
-
   trait Required {
     _: Composable =>
 
@@ -15,7 +14,7 @@ object SelfTypes extends App {
     }
 
     def x: Int = 1
-    def xx = x
+    def xx: Int = x
   }
 
   class Composable {
@@ -23,12 +22,11 @@ object SelfTypes extends App {
 
     def y = 3
 
-    def z = x + y + 2
+    def z: Int = x + y + 2
 
     class Sub extends this.Extendable {
-      override def n = "hi " + super.n
+      override def n: String = "hi " + super.n
     }
-
   }
 
   //val obj0 = new Composable // does not compile - Composable does not conform to its self type
@@ -46,12 +44,11 @@ object SelfTypes extends App {
   println(obj3.x) // prints 1
   println((new obj3.Sub).n) // prints "hi joe"
 
-  val obj4 = new Composable with Required { override def x = super.x + 2 }
+  val obj4 = new Composable with Required { override def x: Int = super.x + 2 }
   println(obj4.z) // prints 8
 
   val obj5 = new Composable with Required {
     class Extendable { def n = "peter" }
   }
   println((new obj5.Sub).n) // prints "hi joe" because no virtual classes
-
 }
